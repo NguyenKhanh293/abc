@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffcccc, #ff9999);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 50px;
+            animation: bounce 2s infinite;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 20px;
+        }
+        img {
+            width: 200px;
+            height: auto;
+            margin: 20px;
+            border-radius: 50%;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Chúc Mừng Sinh Nhật!</h1>
+    <p>Hôm nay là ngày đặc biệt của bạn. Chúc bạn luôn vui vẻ, hạnh phúc và thành công!</p>
+    <img src="https://via.placeholder.com/200x200/ff69b4/ffffff?text=🎂" alt="Bánh sinh nhật">
+    <p>Nhấn nút để nghe bài hát chúc mừng!</p>
+    <button onclick="playMusic()">Phát Nhạc</button>
+    <audio id="birthdaySong" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" preload="auto"></audio> <!-- Thay bằng link nhạc thực nếu muốn -->
+
+    <script>
+        function playMusic() {
+            const audio = document.getElementById('birthdaySong');
+            audio.play();
+        }
+
+        // Hiệu ứng confetti đơn giản
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3000);
+        }
+        setInterval(createConfetti, 200);
+    </script>
+</body>
+</html>
